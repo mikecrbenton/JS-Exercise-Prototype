@@ -19,14 +19,13 @@ Airplane.prototype.land = function () {
   this.isFlying = false;
 };
 
-
 /*
 // 👇 COMPLETE YOUR WORK BELOW 👇
 // 👇 COMPLETE YOUR WORK BELOW 👇
 // 👇 COMPLETE YOUR WORK BELOW 👇
 */
 
-/*
+/*========================================================================================
   TASK 1
     - Write a Person Constructor that initializes `name` and `age` from arguments.
     - All instances of Person should initialize with an empty `stomach` array.
@@ -37,11 +36,27 @@ Airplane.prototype.land = function () {
         + When an instance poops, its `stomach` should empty.
     - Give instances of Person a method `.toString()`:
         + It should return a string with `name` and `age`. Example: "Mary, 50"
-*/
+*///=========================================================================================
 
-function Person() {
-
+function Person( name, age ) {
+  this.name = name;
+  this.age = age;
+  this.stomach = [];
 }
+
+Person.prototype.eat = function ( someFood ){ 
+  if( this.stomach.length < 10 ){ 
+    this.stomach.push(someFood);
+  }
+};
+
+Person.prototype.poop = function (){
+  this.stomach = [];
+};
+
+Person.prototype.toString = function (){
+  return `${this.name}, ${this.age}`;
+};
 
 /*
   TASK 2
