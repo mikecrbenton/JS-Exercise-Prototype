@@ -87,18 +87,31 @@ Car.prototype.fill = function( gallons ){
 };
 
 Car.prototype.drive = function( distance ){
+   
+   //==============================================
+   console.log(`THE DISTANCE IS = ${distance}`);
+   console.log(`THE THE TANK IS  = ${this.tank}`);
+   console.log( `(Math.round(${distance} / ${this.milesPerGallon})`); 
+   //==============================================
 
-      //console.log(`distance is ${distance}`);
+   // IF THE DISTANCE ENTERED IS GREATER THAN THE AMOUNT OF
+   // GAS IN YOUR TANK * BY MPG  - THE DISTANCE
+   // STOPS WHEN THE TANK IS EMPTY
 
-  this.odometer += distance;
-  this.tank -= ( Math.round(distance / this.milesPerGallon) ) ;
+   if( distance > Math.floor( this.tank * this.milesPerGallon )){
+      this.odometer += Math.round(this.tank * this.milesPerGallon);
+   }else{
+      this.odometer += distance;
+   }
+   this.tank -= ( Math.round(distance / this.milesPerGallon) ) ;
 
-      //console.log( `${this.tank} -= (Math.round(${distance} / ${this.milesPerGallon})`); 
+   //==============================================
+   console.log(`I ran out of fuel at ${this.odometer} miles!`);
+   console.log("============================");
+   //==============================================
 
-  if(this.tank <= 0){
-    return `I ran out of fuel at ${this.odometer} miles!`;
-  }
-
+   return `I ran out of fuel at ${this.odometer} miles!`;
+   
 };
 
 
@@ -130,10 +143,10 @@ return `Playing with ${this.favoriteToy}`;
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. Global
+  2. inside of the object
+  3. attached to a new object
+  4. rented or borrowed
 */
 
 
