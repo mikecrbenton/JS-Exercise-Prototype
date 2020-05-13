@@ -145,8 +145,8 @@ return `Playing with ${this.favoriteToy}`;
   In your own words explain the four principles for the "this" keyword below:
   1. Global
   2. inside of the object
-  3. attached to a new object
-  4. rented or borrowed
+  3. attached to a 'new' object
+  4. rented or borrowed from another ( call or apply )
 */
 
 
