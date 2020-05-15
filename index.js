@@ -88,31 +88,50 @@ Car.prototype.fill = function( gallons ){
 
 Car.prototype.drive = function( distance ){
    
-   //==============================================
-   console.log(`THE DISTANCE IS = ${distance}`);
-   console.log(`THE THE TANK IS  = ${this.tank}`);
-   console.log( `(Math.round(${distance} / ${this.milesPerGallon})`); 
-   //==============================================
+      //==============================================
+      console.log(`\nTHE DISTANCE IS = ${distance}`);
+      console.log(`THE THE TANK STARTS AT  = ${this.tank}`);
+      console.log( `(Math.round(${distance} / ${this.milesPerGallon})`); 
+      //==============================================
 
-   // IF THE DISTANCE ENTERED IS GREATER THAN THE AMOUNT OF
-   // GAS IN YOUR TANK * BY MPG  - THE DISTANCE
-   // STOPS WHEN THE TANK IS EMPTY
+   // IF DISTANCE IS GREATER THAN THE AMOUNT OF GAS IN ( TANK * BY MPG )   
+   // THEN THE ODOMETER = 1 ENTIRE TANK OF MILES
+   // OR "EMPTY THE TANK AND STOP"
 
-   if( distance > Math.floor( this.tank * this.milesPerGallon )){
-      this.odometer += Math.round(this.tank * this.milesPerGallon);
+   if( distance > (this.tank * this.milesPerGallon) ){                    
+      this.odometer += (this.tank * this.milesPerGallon);                 
+      this.tank = 0;
+
+   // OTHERWISE THE ODOMETER EQUALS THE MILES YOU DROVE
+   // AND THE SUBTRACT FROM THE TANK THE ( DISTANCE * MPG )
+
    }else{
       this.odometer += distance;
+      this.tank -= distance / this.milesPerGallon ;
    }
-   this.tank -= ( Math.round(distance / this.milesPerGallon) ) ;
-
-   //==============================================
-   console.log(`I ran out of fuel at ${this.odometer} miles!`);
-   console.log("============================");
-   //==============================================
+ 
+   //Liz's Code From Class--------------------------
+   // if( (this.tank - distance / this.milesPerGallon) <= 0 ){
+   //    for( let i = distance ; i > 0 ; i-- ){
+   //       if( (this.tank - i / this.milesPerGallon) === 0){
+   //          this.odometer += i;
+   //          this.tank = 0;
+   //          return `I ran out of fuel at ${this.odometer} miles!`;
+   //       }
+   //    }
+   // }else{
+   //    this.tank -= distance / this.milesPerGallon;
+   //    this.odometer += distance;
+   // }
+   
+      //==============================================
+      console.log(`I ran out of fuel at ${this.odometer} miles!`);
+      console.log("============================");
+      //==============================================
 
    return `I ran out of fuel at ${this.odometer} miles!`;
    
-};
+};// end drive() function
 
 
 /*=============================================================================================
@@ -126,9 +145,7 @@ Car.prototype.drive = function( distance ){
 function Baby( babyargs, num, favoriteToy ) {
 
   Person.call(this, babyargs, num );
-
   this.favoriteToy = favoriteToy ;
-
 }
 
 //LINK THE PERSON PROTOTYPE WITH THE BABY PROTOTYPE
@@ -144,8 +161,8 @@ return `Playing with ${this.favoriteToy}`;
 
   In your own words explain the four principles for the "this" keyword below:
   1. Global
-  2. inside of the object
-  3. attached to a 'new' object
+  2. Definied inside of the object ( Implicit )
+  3. Attached or given to a 'new' object 
   4. rented or borrowed from another ( call or apply )
 */
 
